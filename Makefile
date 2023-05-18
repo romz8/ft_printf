@@ -6,13 +6,13 @@
 #    By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:23:19 by rjobert           #+#    #+#              #
-#    Updated: 2023/05/17 15:47:09 by rjobert          ###   ########.fr        #
+#    Updated: 2023/05/18 18:16:54 by rjobert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = ft_printf.c
+SRC = $(wildcard *.c)
 OBJS = $(SRC:.c=.o)
 NAME = libftprintf.a
 LIB_PATH = ./libft 

@@ -6,45 +6,58 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:50:37 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/17 14:52:23 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/18 22:00:21 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 
-int	ft_count_arguments(const char *s)
+int	ft_parse_type(char c, va_list arg_list)
 {
-	int	count;
+	int n;
 	
-	count = 0;
-	while (*s)
-	{
-		if (*s == '%' && (*(s + 1) != '%' || *(s + 1) != '\0'))
-			   count++;	
-	}
-	return (count);
+	if (c == 'c')
+		n = ft_putchar(va_arg(arg_list, int));
+	else if (c == 's')
+		n = ft_putstr(va_arg(arg_list, char *));
+	else if (c == 'i' || c == 'd')
+		n = ft_putnbr(va_arg(arg_list, int));
+	else if (c == '%')
+		n = ft_putchar('%');
+	else if (c == 'x')
+		n = ft_hexprint(va_arg(arg_list, int), 1);
+	else if (c == 'X')
+		n = ft_hexprint(va_arg(arg_list, int), 0);
+	else	
+		n = 0;
+	return (n);
+
 }
+
 int	ft_printf(const char *s, ...)
 {
 
-	int	i;
+	int		i;
+	int		count;
 	va_list	arg_list;
 	
 	i = 0;
+	count = 0;
 	va_start(arg_list, s);
 	while (s[i])
 	{
-		while (s[i] != '%')
-			i++;
-		if (s[i] == '%')
+		while (s[i] != '%' && s[i])
 		{
-			if (s[i + 1] == 'c')
-				ft_putchar_fd(1, va_arg(arg_list, int));
-			else if (s[i + 1] == 'c')
-				ft_putnbr_fd(va_arg(arg_list, int), 1);
+			i += ft_putchar(s[i]);
+			count++;
 		}
-		i++;
+		
+		if (s[i] == '%' && s[i + 1])
+		{
+			count += ft_parse_type(s[i + 1], arg_list);
+			i += 2;
+		}
 	}
-	return (i);
+	va_end(arg_list);
+	return (count);
 }
