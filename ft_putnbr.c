@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:03:47 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 16:59:24 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/19 18:55:58 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_putnbr(int n)
 {
 	int	size;
 
-	if (n < 0)
+	if (n < 0 || n == 0)
 		size = 1;
 	else
 		size = 0;

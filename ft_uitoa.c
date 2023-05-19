@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:59:32 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 16:57:33 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/19 19:25:25 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	number_bsize(unsigned int n)
 {
 	int	i;
 
+	if (n == 0)
+		return (1);
 	i = 0;
 	while (n)
 	{

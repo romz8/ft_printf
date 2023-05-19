@@ -6,13 +6,13 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:34:20 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 16:46:05 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/19 19:26:49 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hex_address(unsigned long long n);
+static int	ft_hex_address(unsigned long long n);
 
 int	ft_print_ptr(void *ptr)
 {
@@ -20,10 +20,13 @@ int	ft_print_ptr(void *ptr)
 
 	ft_putstr("0x");
 	n = ft_hex_address((unsigned long long) ptr);
-	return (n + 2);
+	if (n != 0)
+		return (n + 2);
+	else
+		return (3);
 }
 
-int	size_hex_address(unsigned long long n)
+static int	size_hex_address(unsigned long long n)
 {
 	int	size;
 
@@ -39,7 +42,7 @@ int	size_hex_address(unsigned long long n)
 	return (size);
 }
 
-int	ft_hex_address(unsigned long long n)
+static int	ft_hex_address(unsigned long long n)
 {
 	char	*base_16;
 	int		size;

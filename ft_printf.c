@@ -6,13 +6,13 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:50:37 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 16:50:07 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/19 19:27:25 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_parse_type(char c, va_list arg_list)
+static int	ft_parse_type(char c, va_list arg_list)
 {
 	int	n;
 
