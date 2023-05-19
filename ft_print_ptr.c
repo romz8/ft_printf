@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexprint.c                                      :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 21:35:10 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 16:41:25 by rjobert          ###   ########.fr       */
+/*   Created: 2023/05/19 15:34:20 by rjobert           #+#    #+#             */
+/*   Updated: 2023/05/19 16:46:05 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	size_hex(int n)
+int	ft_hex_address(unsigned long long n);
+
+int	ft_print_ptr(void *ptr)
+{
+	int	n;
+
+	ft_putstr("0x");
+	n = ft_hex_address((unsigned long long) ptr);
+	return (n + 2);
+}
+
+int	size_hex_address(unsigned long long n)
 {
 	int	size;
 
@@ -28,30 +39,19 @@ int	size_hex(int n)
 	return (size);
 }
 
-int	ft_hexprint(int nb, int maj)
+int	ft_hex_address(unsigned long long n)
 {
-	char			*base_16;
-	unsigned int	n;
-	int				size;
+	char	*base_16;
+	int		size;
 
-	size = size_hex(nb);
-	if (maj == 0)
-		base_16 = "0123456789ABCDEF";
-	else
-		base_16 = "0123456789abcdef";
-	if (nb < 0)
-	{
-		n = -nb;
-		ft_putchar('-');
-	}
-	else
-		n = nb;
+	size = size_hex_address(n);
+	base_16 = "0123456789abcdef";
 	if (n < 16)
 		ft_putchar(base_16[n]);
 	else
 	{
-		ft_hexprint(n / 16, maj);
-		ft_hexprint(n % 16, maj);
-	}	
+		ft_hex_address(n / 16);
+		ft_hex_address(n % 16);
+	}
 	return (size);
 }

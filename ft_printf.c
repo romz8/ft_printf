@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:50:37 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/18 22:00:21 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/19 16:50:07 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_parse_type(char c, va_list arg_list)
 {
-	int n;
-	
+	int	n;
+
 	if (c == 'c')
 		n = ft_putchar(va_arg(arg_list, int));
 	else if (c == 's')
@@ -28,19 +28,21 @@ int	ft_parse_type(char c, va_list arg_list)
 		n = ft_hexprint(va_arg(arg_list, int), 1);
 	else if (c == 'X')
 		n = ft_hexprint(va_arg(arg_list, int), 0);
-	else	
+	else if (c == 'u')
+		n = ft_print_ui(va_arg(arg_list, unsigned int));
+	else if (c == 'p')
+		n = ft_print_ptr(va_arg(arg_list, void *));
+	else
 		n = 0;
 	return (n);
-
 }
 
 int	ft_printf(const char *s, ...)
 {
-
 	int		i;
 	int		count;
 	va_list	arg_list;
-	
+
 	i = 0;
 	count = 0;
 	va_start(arg_list, s);
@@ -51,7 +53,6 @@ int	ft_printf(const char *s, ...)
 			i += ft_putchar(s[i]);
 			count++;
 		}
-		
 		if (s[i] == '%' && s[i + 1])
 		{
 			count += ft_parse_type(s[i + 1], arg_list);
