@@ -180,12 +180,36 @@ void    test_decimal()
     else
         ft_printf(RED"\n\nFAIL -  ISSUE ON THIS TEST\n\n");
 }
+
+void	test_hex()
+{
+	ft_printf(YEL"\n\n============= TESTING HEX VALUES ===================\n\n"reset);
+	int classic_int[] = {42, 5687, -88888, 20008597, -78965, 4200, 0, -10, -200000,	-1895687, 123456789, 20008597, -3216789, -6000023};
+	int i = 0, x = 0, y = 0 ;
+	while (i < 14)
+	{
+		ft_printf("number base 10 is : %i : in hex\t", classic_int[i]);
+		x = ft_printf("%x\t", classic_int[i]);
+		y = printf("%x\n", classic_int[i]);
+		if (x == y)
+			ft_printf(GRN "OK - SAME RESULT\n"reset);
+		else
+		{
+			ft_printf(RED"FAIL - DIFFS\n"reset);
+			printf(RED"for ft_printf we have %i VS for printf we have %i\n"reset, x, y);
+		}
+		ft_printf("\n\n----- new test -------\n\n");
+		i++;
+	}
+	ft_printf("------------- NOW TESTING HEX MAJ -------------");
+}
 int main(void)
 {
 	test_char();
 	test_prct();
 	test_int();
 	test_decimal();
+	test_hex();
 	
 	ft_printf(YEL"\n\n============= TESTING DONE !!===================\n\n"reset);
 		

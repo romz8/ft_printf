@@ -6,13 +6,13 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 21:35:10 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 19:31:27 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/22 13:04:02 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	size_hex(int n)
+static int	size_hex(unsigned int n)
 {
 	int	size;
 
@@ -28,24 +28,16 @@ static int	size_hex(int n)
 	return (size);
 }
 
-int	ft_hexprint(int nb, int maj)
+int	ft_hexprint(unsigned int n, int maj)
 {
 	char			*base_16;
-	unsigned int	n;
 	int				size;
 
-	size = size_hex(nb);
+	size = size_hex(n);
 	if (maj == 0)
 		base_16 = "0123456789ABCDEF";
 	else
 		base_16 = "0123456789abcdef";
-	if (nb < 0)
-	{
-		n = -nb;
-		ft_putchar('-');
-	}
-	else
-		n = nb;
 	if (n < 16)
 		ft_putchar(base_16[n]);
 	else
