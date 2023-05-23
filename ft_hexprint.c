@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 21:35:10 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/22 13:04:02 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/23 15:06:28 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ int	ft_hexprint(unsigned int n, int maj)
 	else
 		base_16 = "0123456789abcdef";
 	if (n < 16)
-		ft_putchar(base_16[n]);
+	{
+		if (ft_putchar(base_16[n]) == -1)
+			return (-1);
+	}
 	else
 	{
-		ft_hexprint(n / 16, maj);
-		ft_hexprint(n % 16, maj);
+		if (ft_hexprint(n / 16, maj) == -1)
+			return (-1);
+		if (ft_hexprint(n % 16, maj) == -1)
+			return (-1);
 	}	
 	return (size);
 }

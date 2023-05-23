@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:37:08 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/18 17:53:36 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/23 13:47:26 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_putchar(int x)
 {
-	ft_putchar_fd(x, 1);
+	if (write(1, &x, 1) == -1)
+		return (-1);
 	return (1);
 }

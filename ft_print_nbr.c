@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 17:54:13 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/23 14:06:31 by rjobert          ###   ########.fr       */
+/*   Created: 2023/05/18 18:03:47 by rjobert           #+#    #+#             */
+/*   Updated: 2023/05/23 14:44:14 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_print_nbr(int n)
 {
-	int	size;
-	int	i;
+	int		size;
+	char	*nbr;
 
-	if (!s)
+	if (n < 0 || n == 0)
+		size = 1;
+	else
+		size = 0;
+	nbr = ft_itoa(n);
+	if (!nbr)
+		return (-1);
+	if (ft_putstr(nbr) == -1)
 	{
-		s = "(null)";
+		free (nbr);
+		return (-1);
 	}
-	i = 0;
-	while (s[i])
+	while (n)
 	{
-		if (ft_putchar(s[i]) == -1)
-			return (-1);
-		else
-			i++;
+		size++;
+		n /= 10;
 	}
-	size = ft_strlen(s);
+	free (nbr);
 	return (size);
 }

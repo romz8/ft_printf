@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:34:20 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 19:26:49 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/23 14:32:33 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	ft_print_ptr(void *ptr)
 {
 	int	n;
 
-	ft_putstr("0x");
+	if (ft_putstr("0x") == -1)
+		return (-1);
 	n = ft_hex_address((unsigned long long) ptr);
 	if (n != 0)
 		return (n + 2);
@@ -50,7 +51,10 @@ static int	ft_hex_address(unsigned long long n)
 	size = size_hex_address(n);
 	base_16 = "0123456789abcdef";
 	if (n < 16)
-		ft_putchar(base_16[n]);
+	{
+		if (ft_putchar(base_16[n]) == -1)
+			return (-1);
+	}
 	else
 	{
 		ft_hex_address(n / 16);

@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:41 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/22 13:04:17 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/23 14:41:24 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int	ft_putchar(int c);
 int	ft_putstr(char *s);
-int	ft_putnbr(int x);
+int	ft_print_nbr(int x);
 int	ft_hexprint(unsigned int nb, int maj);
 int	ft_print_ui(unsigned int n);
 int	ft_print_ptr(void *ptr);

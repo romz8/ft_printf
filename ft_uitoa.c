@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:59:32 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/19 19:25:25 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/23 14:49:36 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,13 @@ int	ft_print_ui(unsigned int n)
 	int		size_base10;
 
 	n_str = ft_itoui(n);
-	ft_putstr_fd(n_str, 1);
+	if (!n_str)
+		return (-1);
+	if (ft_putstr(n_str) == -1)
+	{
+		free(n_str);
+		return (-1);
+	}
 	free(n_str);
 	size_base10 = number_bsize(n);
 	return (size_base10);
