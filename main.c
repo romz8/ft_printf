@@ -201,7 +201,23 @@ void	test_hex()
 		ft_printf("\n\n----- new test -------\n\n");
 		i++;
 	}
-	ft_printf("------------- NOW TESTING HEX MAJ -------------");
+	ft_printf(YEL"\n\n------------- NOW TESTING HEX MAJ -------------\n\n"reset);
+	i = 0, x = 0, y = 0 ;
+    while (i < 14)
+    {
+        ft_printf("number base 10 is : %i : in hex\t", classic_int[i]);
+        x = ft_printf("%X\t", classic_int[i]);
+        y = printf("%X\n", classic_int[i]);
+        if (x == y)
+            ft_printf(GRN "OK - SAME RESULT\n"reset);
+        else
+        {
+            ft_printf(RED"FAIL - DIFFS\n"reset);
+            printf(RED"for ft_printf we have %i VS for printf we have %i\n"reset, x, y);
+        }
+        ft_printf("\n\n----- new test -------\n\n");
+        i++;
+    }
 }
 int main(void)
 {
@@ -211,7 +227,7 @@ int main(void)
 	test_decimal();
 	test_hex();
 	
-	ft_printf(YEL"\n\n============= TESTING DONE !!===================\n\n"reset);
+	ft_printf(GRN"\n\n============= TESTING DONE !!===================\n\n"reset);
 		
 	/*char a = 'a', b = 'b', c = 'c';
 	ft_printf("FT_PRINFF We are going to test this first sentence with 3 characters %c , %c and the last one %i and we test the %% character, 303 in hex is %x and 798 in HEX is %X and -2147483648 in hex is %x and 2147483647 is %X\n", a, b, -15, 303, 798, -2147483648, 2147483647);

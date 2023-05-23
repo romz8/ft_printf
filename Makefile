@@ -6,13 +6,15 @@
 #    By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:23:19 by rjobert           #+#    #+#              #
-#    Updated: 2023/05/18 18:16:54 by rjobert          ###   ########.fr        #
+#    Updated: 2023/05/23 16:29:47 by rjobert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = $(wildcard *.c)
+HEADER = ft_printf.h
+SRC = ft_printf.c ft_print_nbr.c ft_putchar.c ft_uitoa.c ft_hexprint.c \
+	  ft_print_ptr.c ft_putstr.c
 OBJS = $(SRC:.c=.o)
 NAME = libftprintf.a
 LIB_PATH = ./libft 
@@ -27,8 +29,8 @@ $(NAME): $(LIBFT) $(OBJS)
 $(LIBFT):
 	make -C $(LIB_PATH) all 
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@  
+%.o: %.c 
+	$(CC) -c $(CFLAGS) -I ./$(HEADER) $< -o $@  
 
 
 fclean: clean
