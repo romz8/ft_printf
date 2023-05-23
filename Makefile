@@ -6,7 +6,7 @@
 #    By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:23:19 by rjobert           #+#    #+#              #
-#    Updated: 2023/05/23 16:47:42 by rjobert          ###   ########.fr        #
+#    Updated: 2023/05/23 19:54:24 by rjobert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ NAME = libftprintf.a
 LIB_PATH = ./libft 
 LIBFT = $(LIB_PATH)/libft.a
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS)
 	cp libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
