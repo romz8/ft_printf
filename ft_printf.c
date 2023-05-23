@@ -6,7 +6,7 @@
 /*   By: rjobert <rjobert@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:50:37 by rjobert           #+#    #+#             */
-/*   Updated: 2023/05/23 14:40:17 by rjobert          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:12:52 by rjobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,9 @@ static int	ft_iterate_measure(const char *s, va_list arg_list, int n)
 
 int	ft_printf(const char *s, ...)
 {
-	int		i;
 	int		n;
 	va_list	arg_list;
 
-	i = 0;
 	n = 0;
 	va_start(arg_list, s);
 	if (!s)
